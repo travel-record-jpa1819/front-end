@@ -1,8 +1,14 @@
+import styles from './GoogleLogin.module.css'
+
 export default function GoogleLogin() {
   const handleLogin = () => {
-    window.location.href = import.meta.env.REACT_APP_BACKEND_URL + "/api/auth/google";
+    window.location.href = import.meta.env.VITE_GOOGLE_LOGIN_URL;
   };
 
-  return <button onClick={handleLogin}>Login with Google</button>;
+  return (
+    <button onClick={handleLogin} className={styles.google}>
+      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" className={styles.googleIcon} />
+      Sign in with Google
+    </button>
+  );
 }
-
