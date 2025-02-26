@@ -1,24 +1,14 @@
-import { useEffect, useState } from "react";
-import GoogleLogin from "./components/GoogleLogin";
-import UserProfile from "./components/UserProfile";
-import { checkAuthStatus } from "./services/authService";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Profile from "./pages/Profile";
+import Login from "./pages/Login";
 
 export default function App() {
-  const [user, setUser] = useState(null);
-
-  useEffect(() => {
-    async function fetchUser() {
-      const userData = await checkAuthStatus();
-      if (userData) {
-        setUser(userData.user);
-      }
-    }
-    fetchUser();
-  }, []);
-
   return (
-    <div>
-      {user ? <UserProfile user={user} setUser={setUser} /> : <GoogleLogin />}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/profile" element={<Profile />} />
+        <Route path="/" element={<Login />} />
+      </Routes>
+    </Router>
   );
 }
