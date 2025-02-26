@@ -1,8 +1,10 @@
-import GoogleLogin from "../components/GoogleLogin"
+import Navbar from "../components/Navbar"
 
 function Login() {
   return (
-    <GoogleLogin/> 
+    <>
+    <Navbar/>
+    </>
   )
 }
 
