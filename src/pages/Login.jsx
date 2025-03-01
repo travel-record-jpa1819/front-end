@@ -1,3 +1,4 @@
+import styles from './Login.module.css'
 import { useState } from "react";
 import GoogleLogin from "../components/GoogleLogin";
 import Navbar from "../components/Navbar/Navbar";
@@ -7,7 +8,7 @@ function Login() {
   const [password, setPassword] = useState("");
 
   return (
-    <main>
+    <main className={styles.login}>
       <Navbar />
       <form>
         <div>
