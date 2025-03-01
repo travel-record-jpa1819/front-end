@@ -1,6 +1,6 @@
-import { useState, useEffect } from "react";
-import UserProfile from "../components/UserProfile";
-import { checkAuthStatus } from "../services/authService";
+// import { useState, useEffect } from "react";
+// import UserProfile from "../components/UserProfile";
+// import { checkAuthStatus } from "../services/authService";
 
 function Profile() {
   // const [user, setUser] = useState(null);
@@ -19,7 +19,7 @@ function Profile() {
     // <div>
     //   <UserProfile user={user} setUser={setUser} />
     // </div>
-    <h1>hi</h1>
+    <h1>Profile</h1>
   );
 }
 

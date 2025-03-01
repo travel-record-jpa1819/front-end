@@ -1,6 +1,6 @@
-import styles from "./GoogleLogin.module.css";
+import styles from './GoogleLogin.module.css'
 
-export default function GoogleLogin({ googleLoginUrl }) {
+export default function GoogleLogin({googleLoginUrl}) {
   const handleLogin = () => {
     const width = 500;
     const height = 600;
@@ -17,14 +17,9 @@ export default function GoogleLogin({ googleLoginUrl }) {
       alert("Popup blocked! Please allow popups in your browser settings.");
     }
   };
-
   return (
     <button onClick={handleLogin} className={styles.google}>
-      <img
-        src="https://developers.google.com/identity/images/g-logo.png"
-        alt="Google Logo"
-        className={styles.googleIcon}
-      />
+      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" className={styles.googleIcon} />
       Sign in with Google
     </button>
   );
