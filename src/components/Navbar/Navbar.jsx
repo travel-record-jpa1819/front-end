@@ -5,7 +5,7 @@ import Logo from "../Logo/Logo";
 import GoogleLogin from "../GoogleLogin";
 import GithubLogo from "../Logo/GithubLogo";
 
-function Navbar() {
+function Navbar({googleLoginUrl}) {
   return (
     <nav className={styles.nav}>
       <Logo />
@@ -31,7 +31,7 @@ function Navbar() {
           </a>
         </li>
         <li>
-            <GoogleLogin />
+            <GoogleLogin googleLoginUrl={googleLoginUrl} />
         </li>
       </ul>
     </nav>

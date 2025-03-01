@@ -2,10 +2,10 @@ import styles from "./Home.module.css";
 import { Link } from "react-router-dom";
 import Navbar from "../components/Navbar/Navbar";
 
-function Home() {
+function Home({googleLoginUrl}) {
   return (
-    <main className={styles.homepage}>
-      <Navbar />
+    <main className={styles.background}>
+      <Navbar googleLoginUrl={googleLoginUrl}/>
       <section>
         <div>
           <h1>
