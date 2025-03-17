@@ -1,11 +1,11 @@
 import { NavLink } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
-import Logo from "../Logo/Logo";
+import Logo from "../Logos/Logo";
 import GoogleLogin from "../GoogleLogin";
-import GithubLogo from "../Logo/GithubLogo";
+import GithubLogo from "../Logos/GithubLogo";
 
-function Navbar({googleLoginUrl}) {
+function Navbar({ googleLoginUrl }) {
   return (
     <nav className={styles.nav}>
       <Logo />
@@ -31,7 +31,7 @@ function Navbar({googleLoginUrl}) {
           </a>
         </li>
         <li>
-            <GoogleLogin googleLoginUrl={googleLoginUrl} />
+          <GoogleLogin googleLoginUrl={googleLoginUrl} />
         </li>
       </ul>
     </nav>

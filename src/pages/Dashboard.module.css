@@ -1,0 +1,11 @@
+.dashboard {
+  background: linear-gradient(
+    rgba(253, 102, 107, 0.7),
+    rgba(252, 252, 252, 0.3)
+  );
+  height: 100vh;
+  padding: 2.4rem;
+  overscroll-behavior-y: none;
+  display: flex;
+  position: relative;
+}
