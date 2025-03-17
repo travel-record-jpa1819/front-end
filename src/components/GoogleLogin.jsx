@@ -1,6 +1,9 @@
-import styles from './GoogleLogin.module.css'
+import { useNavigate } from "react-router-dom";
+import styles from "./GoogleLogin.module.css";
 
-export default function GoogleLogin({googleLoginUrl}) {
+export default function GoogleLogin({ googleLoginUrl }) {
+  const navigate = useNavigate();
+
   const handleLogin = () => {
     const width = 500;
     const height = 600;
@@ -15,11 +18,34 @@ export default function GoogleLogin({googleLoginUrl}) {
 
     if (!popup) {
       alert("Popup blocked! Please allow popups in your browser settings.");
+      return;
     }
+
+    const timer = setInterval(() => {
+      if (!popup || popup.closed) {
+        clearInterval(timer);
+        navigate("/profile");
+      } else {
+        try {
+          if (popup.location.pathname === "/profile") {
+            clearInterval(timer);
+            popup.close();
+            navigate("/profile");
+          }
+        } catch (error) {
+          console.log(error);
+        }
+      }
+    }, 500);
   };
+
   return (
     <button onClick={handleLogin} className={styles.google}>
-      <img src="https://developers.google.com/identity/images/g-logo.png" alt="Google Logo" className={styles.googleIcon} />
+      <img
+        src="https://developers.google.com/identity/images/g-logo.png"
+        alt="Google Logo"
+        className={styles.googleIcon}
+      />
       Sign in with Google
     </button>
   );
