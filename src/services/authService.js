@@ -12,11 +12,10 @@ export async function checkAuthStatus() {
       console.error("Response error:", response.status);
       return null;
     }
-    console.log(BACKEND_URL)
+    console.log(BACKEND_URL);
     const jsonData = await response.json();
     console.log("user data", jsonData);
     return jsonData;
-
   } catch (error) {
     console.error("Auth check error:", error);
   }
@@ -25,8 +24,18 @@ export async function checkAuthStatus() {
 }
 
 export async function logoutUser() {
-  await fetch(`${BACKEND_URL}/api/auth/logout`, {
-    method: "POST",
-    credentials: "include",
-  });
+  try {
+    const response = await fetch(`${BACKEND_URL}/auth/logout`, {
+      method: "POST",
+      credentials: "include",
+    });
+
+    console.log("logout response:", response.status);
+
+    if (!response.ok) {
+      console.error("logout failed", response.status);
+    }
+  } catch (error) {
+    console.error("Logout error", error);
+  }
 }
