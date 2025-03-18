@@ -1,25 +1,25 @@
-// import { useState, useEffect } from "react";
-// import UserProfile from "../components/UserProfile";
-// import { checkAuthStatus } from "../services/authService";
+import { useState, useEffect } from "react";
+import UserProfile from "../components/UserProfile";
+import { checkAuthStatus } from "../services/authService";
 
 function Profile() {
-  // const [user, setUser] = useState(null);
+  const [user, setUser] = useState(null);
 
-  // useEffect(() => {
-  //   async function fetchUser() {
-  //     const userData = await checkAuthStatus();
-  //     if (userData) {
-  //       setUser(userData.user);
-  //     }
-  //   }
-  //   fetchUser();
-  // }, []);
+  useEffect(() => {
+    async function fetchUser() {
+      const userData = await checkAuthStatus();
+      if (userData) {
+        setUser(userData);
+      }
+    }
+    fetchUser();
+  }, []);
 
+  console.log(user)
   return (
-    // <div>
-    //   <UserProfile user={user} setUser={setUser} />
-    // </div>
-    <h1>Profile</h1>
+    <div>
+      <UserProfile user={user} setUser={setUser} />
+    </div>
   );
 }
 
