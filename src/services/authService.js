@@ -1,16 +1,22 @@
-const BACKEND_URL = import.meta.env.REACT_APP_BACKEND_URL;
+const BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
 
 export async function checkAuthStatus() {
+  console.log("invoked");
   try {
-    const response = await fetch(`${BACKEND_URL}/api/auth`, {
+    const response = await fetch(`${BACKEND_URL}/profile`, {
       method: "GET",
       credentials: "include", // 자동으로 쿠키 포함
     });
 
-    if (response.ok) {
-      return await response.json(); 
-      // { user: {name, picture, email} }
+    if (!response.ok) {
+      console.error("Response error:", response.status);
+      return null;
     }
+    console.log(BACKEND_URL)
+    const jsonData = await response.json();
+    console.log("user data", jsonData);
+    return jsonData;
+
   } catch (error) {
     console.error("Auth check error:", error);
   }

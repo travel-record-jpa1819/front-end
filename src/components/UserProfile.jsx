@@ -6,11 +6,14 @@ export default function UserProfile({ user, setUser }) {
     setUser(null);
   }
 
+  if (!user) return <h2>Loading...</h2>;
+  console.log(user.photo);
+
   return (
     <div>
       <h2>Welcome, {user.name}!</h2>
-      <img src={user.picture} alt="Profile" />
-      <button onClick={handleLogout}>Logout</button>
+      <p>Email: {user.email}</p>
+      {user.photo && <img src={user.photo} alt="Profile" width="100" />}
     </div>
   );
 }

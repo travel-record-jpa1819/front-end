@@ -1,8 +1,7 @@
-import { useNavigate } from "react-router-dom";
 import styles from "./GoogleLogin.module.css";
 
 export default function GoogleLogin({ googleLoginUrl }) {
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   const handleLogin = () => {
     const width = 500;
@@ -24,13 +23,13 @@ export default function GoogleLogin({ googleLoginUrl }) {
     const timer = setInterval(() => {
       if (!popup || popup.closed) {
         clearInterval(timer);
-        navigate("/profile");
+        window.location.href ="/profile"
       } else {
         try {
           if (popup.location.pathname === "/profile") {
             clearInterval(timer);
             popup.close();
-            navigate("/profile");
+            window.location.href ="/profile"
           }
         } catch (error) {
           console.log(error);
