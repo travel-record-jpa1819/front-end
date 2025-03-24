@@ -4,7 +4,7 @@ import {
   Route,
   Navigate,
 } from "react-router-dom";
-import { useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 import Profile from "./pages/Profile";
 import Home from "./pages/Home";
@@ -13,6 +13,7 @@ import CountryList from "./components/Dashboard/CountryList";
 import CityList from "./components/Dashboard/CityList";
 import Form from "./components/Dashboard/Form";
 import City from "./components/Dashboard/City";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 const googleLoginUrl = import.meta.env.VITE_GOOGLE_LOGIN_URL;
 const BASE_URL = "http://localhost:8000";
@@ -40,17 +41,28 @@ export default function App() {
   return (
     <Router>
       <Routes>
-        <Route path="profile" element={<Profile />}></Route>
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        ></Route>
         <Route
           path="/"
           element={<Home googleLoginUrl={googleLoginUrl} />}
         ></Route>
-        
-        <Route path="dashboard" element={<Dashboard />}>
+
         <Route
-            index
-            element={<Navigate to="cities" replace/>}
-          />
+          path="dashboard"
+          element={
+            <ProtectedRoute>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="cities" replace />} />
           <Route
             path="cities"
             element={<CityList cities={cities} isLoading={isLoading} />}
@@ -60,7 +72,7 @@ export default function App() {
             path="countries"
             element={<CountryList cities={cities} isLoading={isLoading} />}
           />
-          <Route path="form" element={<Form/>} />
+          <Route path="form" element={<Form />} />
         </Route>
         {/* <Route path="*" element={<PageNotFound />}></Route> */}
       </Routes>

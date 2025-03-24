@@ -1,13 +1,13 @@
 import { useNavigate } from "react-router-dom";
-import { logoutUser } from "../services/authService";
+import { useAuth } from "../context/AuthContext";
 
-export default function UserProfile({ user, setUser }) {
+export default function UserProfile() {
   const naviagte = useNavigate();
+  const { user, logout } = useAuth();
 
   async function handleLogout() {
-    await logoutUser();
-    setUser(null);
-    naviagte('/')  
+    await logout();
+    naviagte("/");
   }
 
   if (!user) return <h2>Loading...</h2>;
