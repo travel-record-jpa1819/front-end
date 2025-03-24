@@ -10,8 +10,6 @@ export default function UserProfile() {
     naviagte("/");
   }
 
-  if (!user) return <h2>Loading...</h2>;
-
   return (
     <div>
       <h2>Welcome, {user.name}!</h2>

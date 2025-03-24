@@ -12,7 +12,7 @@ export async function checkAuthStatus() {
       console.error("Response error:", response.status);
       return null;
     }
-    console.log(BACKEND_URL);
+    // console.log(BACKEND_URL);
     const jsonData = await response.json();
     console.log("user data", jsonData);
     return jsonData;
@@ -30,7 +30,7 @@ export async function logoutUser() {
       credentials: "include",
     });
 
-    console.log("logout response:", response.status);
+    // console.log("logout response:", response.status);
 
     if (!response.ok) {
       console.error("logout failed", response.status);
