@@ -1,9 +1,6 @@
-// "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=0&longitude=0"
-
-import { useState } from "react";
-
+import { useState, useEffect } from "react";
+import { useLocation, useNavigate } from "react-router-dom";
 import styles from "./Form.module.css";
-import { useNavigate } from "react-router-dom";
 import Button from "../Button";
 import BackButton from "../BackButton";
 
@@ -16,27 +13,70 @@ export function convertToEmoji(countryCode) {
 }
 
 function Form() {
+  const location = useLocation();
   const navigate = useNavigate();
 
+  // Extract query parameters
+  useEffect(() => {
+    const query = new URLSearchParams(location.search);
+    const latFromQuery = query.get("lat");
+    const lngFromQuery = query.get("lng");
+    if (latFromQuery && lngFromQuery) {
+      setLat(latFromQuery);
+      setLng(lngFromQuery);
+    }
+  }, [location.search]);
+
+  // State for lat, lng, cityName, date, and notes
+  const [lat, setLat] = useState("");
+  const [lng, setLng] = useState("");
   const [cityName, setCityName] = useState("");
-  const [country, setCountry] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Handle form submission here.
+    // You can combine the values and send them to your backend or update your state as needed.
+    console.log({ lat, lng, cityName, date, notes });
+    // For example, navigate somewhere after submitting:
+    navigate("/");
+  };
+
   return (
-    <form className={styles.form}>
+    <form className={styles.form} onSubmit={handleSubmit}>
       <div className={styles.row}>
-        <label htmlFor="cityName">City name</label>
+        <label htmlFor="lat">Latitude</label>
+        <input
+          id="lat"
+          value={lat}
+          readOnly
+          // Alternatively, if you want the user to be able to edit it, remove readOnly.
+        />
+      </div>
+      
+      <div className={styles.row}>
+        <label htmlFor="lng">Longitude</label>
+        <input
+          id="lng"
+          value={lng}
+          readOnly
+          // Alternatively, if you want the user to be able to edit it, remove readOnly.
+        />
+      </div>
+
+      <div className={styles.row}>
+        <label htmlFor="cityName">City Name</label>
         <input
           id="cityName"
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
+          placeholder="Enter city name"
         />
-        {/* <span className={styles.flag}>{emoji}</span> */}
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="date">When did you go to {cityName}?</label>
+        <label htmlFor="date">Date of Visit</label>
         <input
           id="date"
           onChange={(e) => setDate(e.target.value)}
@@ -45,16 +85,17 @@ function Form() {
       </div>
 
       <div className={styles.row}>
-        <label htmlFor="notes">Notes about your trip to {cityName}</label>
+        <label htmlFor="notes">Notes about your trip</label>
         <textarea
           id="notes"
           onChange={(e) => setNotes(e.target.value)}
           value={notes}
+          placeholder="Enter your notes"
         />
       </div>
 
       <div className={styles.buttons}>
-        <BackButton/>
+        <BackButton />
         <Button type="primary">Add</Button>
       </div>
     </form>

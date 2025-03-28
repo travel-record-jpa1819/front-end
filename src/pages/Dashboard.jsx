@@ -10,7 +10,9 @@ function Dashboard() {
 
       <div className={styles.mainContent}>
         <Sidebar />
-        <WorldMap />
+        <div style={{ flex: 1 }}>
+          <WorldMap />
+        </div>
       </div>
     </div>
   );
