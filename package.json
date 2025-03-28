@@ -11,6 +11,7 @@
     "server": "json-server --watch data/cities.json --port 8000"
   },
   "dependencies": {
+    "@vis.gl/react-google-maps": "^1.5.2",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
     "react-router-dom": "^7.2.0"
