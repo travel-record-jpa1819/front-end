@@ -8,7 +8,8 @@
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "server": "json-server --watch data/cities.json --port 8000"
+    "server": "json-server --watch data/cities.json --port 8000",
+    "server1": "json-server --watch data/rec.json --port 9000"
   },
   "dependencies": {
     "@vis.gl/react-google-maps": "^1.5.2",
