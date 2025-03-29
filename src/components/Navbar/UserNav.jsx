@@ -17,7 +17,8 @@ export default function UserNav() {
       <Logo />
       <div className={styles.navItems}>
         <Link to="/profile">
-          {user.photo && <img src={user.photo} alt="Profile" width="100" />}
+          {/* {user.photo && <img src={user.photo} alt="Profile" width="100" />} */}
+          <img src="/profile-placeholder.jpg" alt="" />
         </Link>
         <h2>{user.name}</h2>
         <button onClick={handleLogout}>Logout</button>

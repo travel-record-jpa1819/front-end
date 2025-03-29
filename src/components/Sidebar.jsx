@@ -6,7 +6,7 @@ function Sidebar() {
   return (
     <div className={styles.sidebar}>
       <div className={styles.linkContainer}>
-        <Link to="/profile" className="bta">Go Back</Link>
+        <Link to="/profile" className="bta">Back</Link>
         <Link to="/recommendation" className="buttonShine">
           Ask AI
         </Link>
