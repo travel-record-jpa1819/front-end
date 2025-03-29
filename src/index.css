@@ -89,7 +89,7 @@ body {
     transparent
   );
   transform: skewX(-25deg);
-  animation: shine 2s infinite;
+  animation: shine 1.8s infinite;
 }
 
 @keyframes shine {

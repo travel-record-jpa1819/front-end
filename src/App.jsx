@@ -13,7 +13,7 @@ import CityList from "./components/Dashboard/CityList";
 import Form from "./components/Dashboard/Form";
 import City from "./components/Dashboard/City";
 import ProtectedRoute from "./components/ProtectedRoute";
-import Recommendation from "./pages/Recommendation";
+import Recommendation from "./pages/RecommendationPage";
 
 import { CitiesProvider } from "./context/CitiesContext";
 import { AiProvider } from "./context/AiContext";
@@ -38,7 +38,14 @@ export default function App() {
               path="/"
               element={<Home googleLoginUrl={googleLoginUrl} />}
             ></Route>
-            <Route path="/recommendation" element={<Recommendation />}></Route>
+            <Route
+              path="/recommendation"
+              element={
+                <ProtectedRoute>
+                  <Recommendation />
+                </ProtectedRoute>
+              }
+            ></Route>
             <Route
               path="dashboard"
               element={
