@@ -16,12 +16,12 @@
   position: relative;
 }
 
-.row input{
+.row input {
   padding: 1rem;
   border-radius: 6px;
 }
 
-.row textarea{
+.row textarea {
   padding: 1rem;
   border-radius: 6px;
 }
@@ -71,7 +71,6 @@
   font-size: 2rem;
   transition: background-color 0.2s ease, border-color 0.2s ease;
 }
-
 
 .thumbCheckbox::before {
   content: "👎";

@@ -7,6 +7,21 @@
   margin: 0 auto;
 }
 
+.refreshButton {
+  margin: 1rem;
+  padding: 1rem 1rem;
+  font-size: 1rem;
+  background-color: var(--color-horny--1); /* Or another color */
+  border: none;
+  border-radius: 100%;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.refreshButton:hover {
+  transform: rotate(90deg);
+}
+
 .card {
   position: relative;
   width: 100%;
@@ -36,6 +51,7 @@
   height: 100%;
   -webkit-backface-visibility: hidden; /* Safari */
   backface-visibility: hidden;
+  padding-top: 1rem;
 }
 
 /* Style the front side (fallback if image is missing) */
@@ -46,11 +62,64 @@
   opacity: 90%;
 }
 
+
 /* Style the back side */
 .cardBack {
-  background-color: #e5d9d9;
+  background-color: white;
   color: black;
   transform: rotateY(180deg);
   border-radius: 20px;
-  opacity: 90%;
+  text-align: left;
+  overflow-y: auto;
+  max-height: 100%; 
+}
+.cardBack::-webkit-scrollbar{
+  width: 0;
+}
+
+/* Style for the city name heading */
+.cityName {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 1rem 0 0.5rem;
+  color: #333; 
+}
+
+/* Style for paragraphs inside the card */
+.card p {
+  font-size: 1rem;
+  line-height: 1.5;
+  margin: 0.5rem 1rem;
+  color: #444;
+}
+
+/* Style for the strong elements to make them stand out */
+.card strong {
+  font-size: 1.2rem;
+  font-weight: 600;
+  color: #222;
+}
+
+/* Style for the list of tourist spots */
+.card .touristSpots ul {
+  list-style: disc inside;
+  padding-left: 1rem;
+}
+
+/* Style for individual list items */
+.card .touristSpots li {
+  margin: 0.3rem 0;
+  font-size: 0.9rem;
+  color: #555;
+  list-style: none;
+}
+
+.card .touristSpots strong {
+  display: block;
+  margin: 0.5rem 1rem;
+}
+
+/* Optional: Add a little text shadow for depth */
+.card h2, .card p, .card li {
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.1);
 }
