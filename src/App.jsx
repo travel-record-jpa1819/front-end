@@ -13,46 +13,50 @@ import CityList from "./components/Dashboard/CityList";
 import Form from "./components/Dashboard/Form";
 import City from "./components/Dashboard/City";
 import ProtectedRoute from "./components/ProtectedRoute";
+import Recommendation from "./pages/Recommendation";
 
 import { CitiesProvider } from "./context/CitiesContext";
+import { AiProvider } from "./context/AiContext";
 
 const googleLoginUrl = import.meta.env.VITE_GOOGLE_LOGIN_URL;
 
 export default function App() {
   return (
     <CitiesProvider>
-      <Router>
-        <Routes>
-          <Route
-            path="profile"
-            element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            }
-          ></Route>
-          <Route
-            path="/"
-            element={<Home googleLoginUrl={googleLoginUrl} />}
-          ></Route>
-
-          <Route
-            path="dashboard"
-            element={
-              <ProtectedRoute>
-                <Dashboard />
-              </ProtectedRoute>
-            }
-          >
-            <Route index element={<Navigate to="cities" replace />} />
-            <Route path="cities" element={<CityList />} />
-            <Route path="cities/:id" element={<City />} />
-            <Route path="countries" element={<CountryList />} />
-            <Route path="form" element={<Form />} />
-          </Route>
-          {/* <Route path="*" element={<PageNotFound />}></Route> */}
-        </Routes>
-      </Router>
+      <AiProvider>
+        <Router>
+          <Routes>
+            <Route
+              path="profile"
+              element={
+                <ProtectedRoute>
+                  <Profile />
+                </ProtectedRoute>
+              }
+            ></Route>
+            <Route
+              path="/"
+              element={<Home googleLoginUrl={googleLoginUrl} />}
+            ></Route>
+            <Route path="/recommendation" element={<Recommendation />}></Route>
+            <Route
+              path="dashboard"
+              element={
+                <ProtectedRoute>
+                  <Dashboard />
+                </ProtectedRoute>
+              }
+            >
+              <Route index element={<Navigate to="cities" replace />} />
+              <Route path="cities" element={<CityList />} />
+              <Route path="cities/:id" element={<City />} />
+              <Route path="countries" element={<CountryList />} />
+              <Route path="form" element={<Form />} />
+            </Route>
+            {/* <Route path="*" element={<PageNotFound />}></Route> */}
+          </Routes>
+        </Router>
+      </AiProvider>
     </CitiesProvider>
   );
 }
