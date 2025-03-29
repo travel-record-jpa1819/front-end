@@ -48,3 +48,58 @@ body {
   padding: 1rem 3rem;
   border-radius: 5px;
 }
+
+.bta:link,
+.bta:visited{
+  display: inline-block;
+  background-color: var(--color-dark--2);
+  color: var(--color-light--4);
+  text-decoration: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  padding: 1rem 3rem;
+  border-radius: 5px;
+}
+
+.buttonShine {
+  position: relative;
+  overflow: hidden;
+  background-color: var(--color-horny--1); 
+  color: white;
+  border: none;
+  font-size: 1.6rem;
+  font-weight: 600;
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.buttonShine::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -75%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    120deg,
+    transparent,
+    rgba(255, 255, 255, 0.6),
+    transparent
+  );
+  transform: skewX(-25deg);
+  animation: shine 2s infinite;
+}
+
+@keyframes shine {
+  0% {
+    left: -75%;
+  }
+  50% {
+    left: 125%;
+  }
+  100% {
+    left: 125%;
+  }
+}

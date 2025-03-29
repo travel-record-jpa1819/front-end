@@ -1,12 +1,16 @@
 import styles from "./Sidebar.module.css";
-import { Outlet } from "react-router-dom";
-import Logo from "./Logos/Logo";
+import { Link, Outlet } from "react-router-dom";
 import AppNav from "./Navbar/AppNav";
 
 function Sidebar() {
   return (
     <div className={styles.sidebar}>
-      <Logo />
+      <div className={styles.linkContainer}>
+        <Link to="/profile" className="bta">Go Back</Link>
+        <Link to="/recommendation" className="buttonShine">
+          Ask AI
+        </Link>
+      </div>
       <AppNav />
 
       <Outlet />

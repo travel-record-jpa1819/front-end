@@ -1,5 +1,6 @@
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import Logo from "../Logos/Logo";
 
 import styles from "./UserNav.module.css";
 
@@ -13,9 +14,14 @@ export default function UserNav() {
   }
   return (
     <div className={styles.nav}>
-      {user.photo && <img src={user.photo} alt="Profile" width="100" />}
-      <h2>{user.name}</h2>
-      <button onClick={handleLogout}>Logout</button>
+      <Logo />
+      <div className={styles.navItems}>
+        <Link to="/profile">
+          {user.photo && <img src={user.photo} alt="Profile" width="100" />}
+        </Link>
+        <h2>{user.name}</h2>
+        <button onClick={handleLogout}>Logout</button>
+      </div>
     </div>
   );
 }

@@ -16,6 +16,16 @@
   position: relative;
 }
 
+.row input{
+  padding: 1rem;
+  border-radius: 6px;
+}
+
+.row textarea{
+  padding: 1rem;
+  border-radius: 6px;
+}
+
 .buttons {
   display: flex;
   justify-content: space-between;
