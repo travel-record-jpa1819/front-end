@@ -15,4 +15,5 @@
   display: flex;
   gap: 2rem; 
   overflow: hidden;
+  margin: 2rem; 
 }

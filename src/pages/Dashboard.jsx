@@ -5,7 +5,7 @@ import UserNav from "../components/Navbar/UserNav";
 
 function Dashboard() {
   return (
-    <div className={styles.dashboard}>
+    <main className={styles.dashboard}>
       <UserNav />
 
       <div className={styles.mainContent}>
@@ -14,7 +14,7 @@ function Dashboard() {
           <WorldMap />
         </div>
       </div>
-    </div>
+    </main>
   );
 }
 
