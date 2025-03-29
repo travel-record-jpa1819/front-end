@@ -33,6 +33,7 @@ function Form() {
   const [cityName, setCityName] = useState("");
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
+  const [liked, setLiked] = useState(true);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -83,6 +84,13 @@ function Form() {
           value={date}
         />
       </div>
+
+      <div className={styles.row}>
+          <label htmlFor="liked">Enjoyed your trip?</label>
+          <input id="liked" type="checkbox" checked={liked} 
+          onChange={(e)=>setLiked(e.target.checked)}
+          className={styles.thumbCheckbox}/>
+        </div>
 
       <div className={styles.row}>
         <label htmlFor="notes">Notes about your trip</label>
