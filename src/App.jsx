@@ -21,47 +21,46 @@ const googleLoginUrl = import.meta.env.VITE_GOOGLE_LOGIN_URL;
 
 export default function App() {
   return (
-    <CitiesProvider>
-      
-        <Router>
-          <Routes>
-            <Route
-              path="profile"
-              element={
-                <ProtectedRoute>
-                  <Profile />
-                </ProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="/"
-              element={<Home googleLoginUrl={googleLoginUrl} />}
-            ></Route>
-            <Route
-              path="/recommendation"
-              element={
-                <ProtectedRoute>
-                  <Recommendation />
-                </ProtectedRoute>
-              }
-            ></Route>
-            <Route
-              path="dashboard"
-              element={
-                <ProtectedRoute>
-                  <Dashboard />
-                </ProtectedRoute>
-              }
-            >
-              <Route index element={<Navigate to="cities" replace />} />
-              <Route path="cities" element={<CityList />} />
-              <Route path="cities/:id" element={<City />} />
-              <Route path="countries" element={<CountryList />} />
-              <Route path="form" element={<Form />} />
-            </Route>
-            {/* <Route path="*" element={<PageNotFound />}></Route> */}
-          </Routes>
-        </Router>
-    </CitiesProvider>
+    <Router>
+      <Routes>
+        <Route
+          path="profile"
+          element={
+            <ProtectedRoute>
+              <Profile />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="/"
+          element={<Home googleLoginUrl={googleLoginUrl} />}
+        ></Route>
+        <Route
+          path="/recommendation"
+          element={
+            <ProtectedRoute>
+              <Recommendation />
+            </ProtectedRoute>
+          }
+        ></Route>
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute>
+              <CitiesProvider>
+                <Dashboard />
+              </CitiesProvider>
+            </ProtectedRoute>
+          }
+        >
+          <Route index element={<Navigate to="cities" replace />} />
+          <Route path="cities" element={<CityList />} />
+          <Route path="cities/:id" element={<City />} />
+          <Route path="countries" element={<CountryList />} />
+          <Route path="form" element={<Form />} />
+        </Route>
+        {/* <Route path="*" element={<PageNotFound />}></Route> */}
+      </Routes>
+    </Router>
   );
 }
