@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { submitTripData } from "../../services/api";
 import styles from "./Form.module.css";
 import Button from "../Button";
 import BackButton from "../BackButton";
@@ -35,13 +36,17 @@ function Form() {
   const [notes, setNotes] = useState("");
   const [liked, setLiked] = useState(true);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // Handle form submission here.
-    // You can combine the values and send them to your backend or update your state as needed.
-    console.log({ lat, lng, cityName, date, notes });
-    // For example, navigate somewhere after submitting:
-    navigate("/");
+    console.log({ lat, lng, cityName, date, notes,liked });
+    const formData = { lat, lng, cityName, date, notes, liked };
+    try {
+      const result = await submitTripData(formData);
+      console.log("POST successful", result);
+      navigate("/dashboard");
+    } catch (error) {
+      console.error("Error:", error);
+    }
   };
 
   return (
@@ -104,10 +109,11 @@ function Form() {
 
       <div className={styles.buttons}>
         <BackButton />
-        <Button type="primary">Add</Button>
+        <Button type="submit">Add</Button>
       </div>
     </form>
   );
 }
+
 
 export default Form;
