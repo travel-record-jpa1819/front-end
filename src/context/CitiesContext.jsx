@@ -14,13 +14,13 @@ function CitiesProvider({ children }) {
     async function fetchCities() {
       try {
         setIsLoading(true);
-        // const res = await fetch(`${BASE_URL}/cities`);
-        // const data = await res.json();
-        const data = getVisitedCities();
-        console.log("success");
+        const res = await fetch(`${BASE_URL}/cities`);
+        const data = await res.json();
+        // const data = getVisitedCities();
+        console.log("👉 visited cities from server:", data);
         setCities(data);
       } catch {
-        // alert("There is an error fetching cities");
+        console.error("❌ Failed to fetch cities", err);
       } finally {
         setIsLoading(false);
       }
@@ -31,7 +31,7 @@ function CitiesProvider({ children }) {
   async function getCity(id){
       try {
         setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities/${id}`);
+        const res = await fetch(`http://localhost:8080/cities/${id}`);
         const data = await res.json();
         setCurrentCity(data)
       } catch {

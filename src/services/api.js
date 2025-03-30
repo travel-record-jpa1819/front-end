@@ -23,6 +23,7 @@ export async function getVisitedCities(){
   if(!response.ok){
     throw new Error("Network response error",response.status);
   }
+  console.log("getVisitedCities executed");
   return response.json()
 }
 export async function getAiRecData(){
