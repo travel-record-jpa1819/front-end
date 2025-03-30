@@ -3,9 +3,11 @@ import UserNav from "../components/Navbar/UserNav";
 import styles from "./RecommendationPage.module.css";
 import ChatBot from "../components/ChatBot";
 import { Link } from "react-router-dom";
+import { AiProvider } from "../context/AiContext";
 
 function RecommendationPage() {
   return (
+    <AiProvider>
     <main className={styles.background}>
       <UserNav />
       <div className={styles.mainContent}>
@@ -17,6 +19,7 @@ function RecommendationPage() {
       </div>
       <ChatBot />
     </main>
+    </AiProvider>
   );
 }
 

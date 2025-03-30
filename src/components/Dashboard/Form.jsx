@@ -32,7 +32,7 @@ function Form() {
   const [lat, setLat] = useState("");
   const [lng, setLng] = useState("");
   const [cityName, setCityName] = useState("");
-  const [date, setDate] = useState(new Date());
+  const [date, setDate] = useState(new Date().toISOString());
   const [notes, setNotes] = useState("");
   const [liked, setLiked] = useState(true);
 

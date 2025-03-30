@@ -1,4 +1,5 @@
 import { createContext, useState, useEffect, useContext } from "react";
+import { getVisitedCities } from "../services/api";
 
 const BASE_URL = "http://localhost:8000";
 
@@ -13,11 +14,13 @@ function CitiesProvider({ children }) {
     async function fetchCities() {
       try {
         setIsLoading(true);
-        const res = await fetch(`${BASE_URL}/cities`);
-        const data = await res.json();
+        // const res = await fetch(`${BASE_URL}/cities`);
+        // const data = await res.json();
+        const data = getVisitedCities();
+        console.log("success");
         setCities(data);
       } catch {
-        alert("There is an error fetching cities");
+        // alert("There is an error fetching cities");
       } finally {
         setIsLoading(false);
       }
