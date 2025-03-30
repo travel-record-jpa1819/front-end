@@ -1,6 +1,6 @@
 import { createContext, useContext, useState, useEffect } from "react";
-
-const BASE_URL = "http://localhost:9000";
+import { getAiRecData } from "../services/api";
+// const BASE_URL = "http://localhost:9000";
 
 const AiContext = createContext();
 
@@ -10,16 +10,17 @@ function AiProvider({ children }) {
 
   async function fetchAiResponse() {
     try {
-      const res = await fetch(`${BASE_URL}/rec`);
-      const data = await res.json();
+      const data = await getAiRecData();
+      // const res = await fetch(`${BASE_URL}/rec`);
+      // const data = await res.json();
       setData(data);
     } catch {
-      alert("There is an error fetching ai resposne");
+      alert("There is an error fetching ai response");
     } finally {
       setIsLoading(false);
     }
   }
-  
+
   useEffect(function () {
     fetchAiResponse();
   }, []);

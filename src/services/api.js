@@ -9,7 +9,19 @@ export async function submitTripData(formData) {
   });
 
   if (!response.ok) {
-    throw new Error("Network response error");
+    throw new Error("Network response error",response.status);
+  }
+  return response.json();
+}
+
+export async function getAiRecData(){
+  const response = await fetch(`${BACKEND_URL}/rec`,{
+    method: "GET",
+    credentials: "include",
+  });
+
+  if(!response.ok){
+    throw new Error("Network response error",response.status);
   }
   return response.json();
 }
