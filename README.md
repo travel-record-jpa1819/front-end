@@ -46,18 +46,14 @@ npm run dev
 
 ## 🔍 Challenges & Learnings
 Key Challenges
-Frontend-backend API contract negotiation
+- Frontend-backend API contract negotiation
+- Spring AI integration for multi-turn conversations
+- Google Maps API optimization
 
-Spring AI integration for multi-turn conversations
-
-Google Maps API optimization
-
-Lessons Learned
-REST API design best practices
-
-Full-stack team collaboration techniques
-
-AI service integration patterns
+### Lessons Learned
+- REST API design best practices
+- Full-stack team collaboration techniques
+- AI service integration patterns
 
 ## 🏆 Accomplishments
 - Built end-to-end travel documentation system
